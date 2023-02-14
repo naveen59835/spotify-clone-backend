@@ -18,10 +18,10 @@ public class AppConfig {
         return builder.routes()
                 .route(p -> p
                         .path("/api/v1/**")
-                        .uri("http://localhost:8082/"))
+                        .uri("lb://user-auth-service"))
                 .route(p->p
                         .path("/api/v2/**")
-                        .uri("http://localhost:8083/"))
+                        .uri("lb://user-product-service"))
                 .build();
     }
 }
