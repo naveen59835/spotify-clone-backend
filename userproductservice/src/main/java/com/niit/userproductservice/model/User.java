@@ -18,11 +18,14 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @ToString
 
 public class User {
-    @Id
+
     String email;
     String name;
 
     String phoneNo;
+    @Id
+    String userId;
+    String password;
     Track trackList;
 
 }

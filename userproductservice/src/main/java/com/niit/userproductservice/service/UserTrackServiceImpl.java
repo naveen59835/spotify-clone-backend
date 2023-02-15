@@ -7,24 +7,35 @@
 package com.niit.userproductservice.service;
 
 import com.niit.userproductservice.model.User;
+import com.niit.userproductservice.proxy.UserTrackProxy;
 import com.niit.userproductservice.repo.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import javax.sound.midi.Track;
 import java.util.List;
 @Service
 public class UserTrackServiceImpl implements UserTrackService{
+    @Autowired
     UserRepo userRepo;
+    @Autowired
+    UserTrackProxy userTrackProxy;
 
     public UserTrackServiceImpl(UserRepo userRepo) {
         this.userRepo = userRepo;
     }
 
-
     @Override
     public User saveUser(User user) {
-        return userRepo.save(user);
+       User user12=userRepo.save(user);
+       if(!user12.getUserId().isEmpty())
+       {
+           ResponseEntity responseEntity=userTrackProxy.saveUserTrackInAuth(user12);
+           System.out.println(responseEntity.getBody());
+
+       }
+       return user12;
     }
 
     @Override
