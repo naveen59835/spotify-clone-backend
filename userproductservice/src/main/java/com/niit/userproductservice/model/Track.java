@@ -19,5 +19,6 @@ public class Track {
     @Id
     String trackId;
     String trackName;
+    String musicPath;
 
 }
