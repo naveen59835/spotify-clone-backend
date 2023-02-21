@@ -10,6 +10,8 @@ import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.List;
+
 @Document
 @Getter
 @Setter
@@ -26,6 +28,6 @@ public class User {
     @Id
     String userId;
     String password;
-    Track trackList;
+   Track trackList;
 
 }

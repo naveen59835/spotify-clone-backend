@@ -43,6 +43,7 @@ public class UserController {
     }
     @PostMapping("/checkauth")
     public ResponseEntity<?> checkAuth(@RequestBody User user){
+        System.out.println("checking user in controller layer"+user);
         User user2=userService.checkAuth(user);
         if(user2!=null){
             return new ResponseEntity<>(securityTokenGenerator.generateToken(user2),HttpStatus.OK);
@@ -53,7 +54,12 @@ public class UserController {
         }
 
     }
-
-
-
+    @PostMapping("/login")
+    public ResponseEntity<?> login(@RequestBody User form){
+        User form1 = userService.loginAuth(form.getUserId());
+        if(form1.getPassword().equals(form.getPassword())){
+            return new ResponseEntity<User>(form1, HttpStatus.OK);
+        }
+        return new ResponseEntity<String>("Not Found",HttpStatus.NOT_FOUND);
+    }
 }

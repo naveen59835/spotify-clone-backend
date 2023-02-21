@@ -4,12 +4,14 @@
  * Created With : IntelliJ IDEA Community Edition
  */
 
-package com.niit.userproductservice.service;
+package com.example.Playlistservice.service;
 
-import com.niit.userproductservice.model.Playlist;
-import com.niit.userproductservice.repo.PlaylistRepo;
+import com.example.Playlistservice.model.Playlist;
+import com.example.Playlistservice.repo.PlaylistRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class PlaylistServiceImpl implements PlaylistService{
@@ -23,5 +25,10 @@ public class PlaylistServiceImpl implements PlaylistService{
     @Override
     public Playlist savePlaylist(Playlist playlist) {
         return playlistRepo.save(playlist);
+    }
+
+    @Override
+    public List<Playlist> getFullList() {
+        return playlistRepo.findAll();
     }
 }

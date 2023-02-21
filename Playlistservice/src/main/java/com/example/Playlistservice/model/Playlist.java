@@ -1,28 +1,28 @@
 /*
  * Author : Naveen Kumar
- * Date : 12-02-2023
+ * Date : 21-02-2023
  * Created With : IntelliJ IDEA Community Edition
  */
 
-package com.niit.userproductservice.model;
+package com.example.Playlistservice.model;
 
 import lombok.*;
-import org.springframework.data.annotation.Id;
+import javax.persistence.Id;
 
+import javax.persistence.Entity;
+
+
+@Entity
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @ToString
-
-public class Track {
+public class Playlist {
     @Id
     String trackId;
     String trackName;
     String artistName;
     String duration;
-    String musicPath;
-
-
-
+    String imgsrc;
 }

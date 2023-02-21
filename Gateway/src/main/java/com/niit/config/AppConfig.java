@@ -23,6 +23,9 @@ public class AppConfig {
                 .route(p->p
                         .path("/api/v2/**")
                         .uri("lb://user-product-service"))
+                .route(p->p
+                        .path("/api/v3/**")
+                        .uri("lb://user-playlist"))
                 .build();
     }
 }

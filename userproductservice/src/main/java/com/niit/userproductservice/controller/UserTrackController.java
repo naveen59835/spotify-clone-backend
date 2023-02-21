@@ -53,6 +53,7 @@ public class UserTrackController {
         return responseEntity;
     }
     @GetMapping("/tracks")
+
     public ResponseEntity<?> getAllTracks() {
         try{
             responseEntity=new ResponseEntity(userTrackService.getTrackList(),HttpStatus.OK);
@@ -82,11 +83,6 @@ public class UserTrackController {
             return new ResponseEntity<String>("Error Occured",HttpStatus.FAILED_DEPENDENCY);
         }
     }
-
-
-
-
-
 
 
 }

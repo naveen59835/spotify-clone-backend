@@ -10,6 +10,8 @@ import com.niit.userauthservice.model.User;
 import com.niit.userauthservice.repo.UserRepo;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class UserServiceImpl implements UserService {
     UserRepo userRepo;
@@ -25,17 +27,22 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User checkAuth(User user) {
-        User user1 =userRepo.findById(user.getUserId()).get();
-        if(user1 != null){
-            if(user1.getPassword().equals(user.getPassword())){
-                return user;
-
-            }else {
+        Optional<User> optionalUser = userRepo.findById(user.getUserId());
+            if (optionalUser.isPresent()) {
+                User user1 = optionalUser.get();
+                if (user1.getPassword().equals(user.getPassword())) {
+                    return user1;
+                } else {
+                    return null;
+                }
+            } else {
                 return null;
             }
-        }else {
-            return null;
         }
 
+    @Override
+    public User loginAuth(String userId) {
+        return userRepo.findById(userId).orElse(null);
     }
 }
+

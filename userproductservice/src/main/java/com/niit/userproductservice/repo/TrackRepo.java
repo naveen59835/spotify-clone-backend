@@ -7,11 +7,8 @@ import org.springframework.data.mongodb.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-
 @Repository
-public interface UserRepo extends MongoRepository<User,String> {
-    @Query("{'trackList.trackName':{$in:[?0]}}")
-    List<User> findByCustomer (String name);
+public interface TrackRepo extends MongoRepository <Track,String> {
 
 
 }
