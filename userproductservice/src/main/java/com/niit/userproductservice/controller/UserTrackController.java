@@ -52,7 +52,8 @@ public class UserTrackController {
         }
         return responseEntity;
     }
-    @GetMapping("/tracks")
+    @GetMapping("/allusers/tracks")
+
 
     public ResponseEntity<?> getAllTracks() {
         try{
